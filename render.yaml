@@ -2,11 +2,13 @@ databases:
   - name: studysync-postgres
     databaseName: studysync
     user: studysync
+    plan: free
 
 services:
   - type: web
     name: studysync-auth
     env: docker
+    plan: free
     dockerContext: backend
     dockerfilePath: backend/auth-service/Dockerfile
     healthCheckPath: /actuator/health
@@ -29,6 +31,7 @@ services:
   - type: web
     name: studysync-gateway
     env: docker
+    plan: free
     dockerContext: backend
     dockerfilePath: backend/gateway/Dockerfile
     healthCheckPath: /actuator/health
@@ -36,6 +39,7 @@ services:
   - type: web
     name: studysync-learning
     env: docker
+    plan: free
     dockerContext: backend
     dockerfilePath: backend/learning-service/Dockerfile
     healthCheckPath: /actuator/health
@@ -56,6 +60,7 @@ services:
   - type: web
     name: studysync-tutoring
     env: docker
+    plan: free
     dockerContext: backend
     dockerfilePath: backend/tutoring-service/Dockerfile
     healthCheckPath: /actuator/health
@@ -74,6 +79,7 @@ services:
   - type: web
     name: studysync-engagement
     env: docker
+    plan: free
     dockerContext: backend
     dockerfilePath: backend/engagement-service/Dockerfile
     healthCheckPath: /actuator/health
@@ -92,6 +98,7 @@ services:
   - type: web
     name: studysync-payment
     env: docker
+    plan: free
     dockerContext: backend
     dockerfilePath: backend/payment-service/Dockerfile
     healthCheckPath: /actuator/health
