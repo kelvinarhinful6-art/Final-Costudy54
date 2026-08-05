@@ -1,0 +1,79 @@
+import React from "react";
+import { View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import type { RootStackParamList } from "./types";
+import { ThemeProvider } from "./ThemeContext";
+import LoginScreen from "./screens/LoginScreen";
+import MainTabs from "./screens/MainTabs";
+import BecomeTutorScreen from "./screens/BecomeTutorScreen";
+import AdminReviewScreen from "./screens/AdminReviewScreen";
+import AdminVettingScreen from "./screens/AdminVettingScreen";
+import StudyTimerScreen from "./screens/StudyTimerScreen";
+import LoadingScreen from "./screens/LoadingScreen";
+import ChatScreen from "./screens/ChatScreen";
+import FindPeopleScreen from "./screens/FindPeopleScreen";
+import InvitesScreen from "./screens/InvitesScreen";
+import TutorSessionsScreen from "./screens/TutorSessionsScreen";
+import SessionChatScreen from "./screens/SessionChatScreen";
+import ReviewScreen from "./screens/ReviewScreen";
+import MySessionsScreen from "./screens/MySessionsScreen";
+import AnalyticsScreen from "./screens/AnalyticsScreen";
+import NotificationsScreen from "./screens/NotificationsScreen";
+import TutorEarningsScreen from "./screens/TutorEarningsScreen";
+import AdminRevenueScreen from "./screens/AdminRevenueScreen";
+import SupportListScreen from "./screens/SupportListScreen";
+import SupportChatScreen from "./screens/SupportChatScreen";
+import AdminDashboardScreen from "./screens/AdminDashboardScreen";
+import AdminTutorDetailScreen from "./screens/AdminTutorDetailScreen";
+
+import StudyPlannerScreen from "./screens/StudyPlannerScreen";
+import GroupsScreen from "./screens/GroupsScreen";
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export default function App() {
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    setTimeout(() => setIsLoading(false), 2500); // Show loading for 2.5 seconds
+  }, []);
+
+  if (isLoading) return <LoadingScreen />;
+  return (
+    <ThemeProvider>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Main" component={MainTabs} />
+            <Stack.Screen name="BecomeTutor" component={BecomeTutorScreen} />
+            <Stack.Screen name="AdminReview" component={AdminReviewScreen} />
+            <Stack.Screen name="AdminVetting" component={AdminVettingScreen} />
+            <Stack.Screen name="StudyPlanner" component={StudyPlannerScreen} />
+            <Stack.Screen name="Planner" component={StudyPlannerScreen} />
+            <Stack.Screen name="Groups" component={GroupsScreen} />
+            <Stack.Screen name="StudyTimer" component={StudyTimerScreen} />
+            <Stack.Screen name="Chat" component={ChatScreen} />
+            <Stack.Screen name="FindPeople" component={FindPeopleScreen} />
+            <Stack.Screen name="Invites" component={InvitesScreen} />
+            <Stack.Screen name="TutorSessions" component={TutorSessionsScreen} />
+            <Stack.Screen name="SessionChat" component={SessionChatScreen} />
+            <Stack.Screen name="Review" component={ReviewScreen} />
+            <Stack.Screen name="MySessions" component={MySessionsScreen} />
+            <Stack.Screen name="Analytics" component={AnalyticsScreen} />
+            <Stack.Screen name="Notifications" component={NotificationsScreen} />
+            <Stack.Screen name="TutorEarnings" component={TutorEarningsScreen} />
+            <Stack.Screen name="AdminRevenue" component={AdminRevenueScreen} />
+            <Stack.Screen name="SupportList" component={SupportListScreen} />
+            <Stack.Screen name="SupportChat" component={SupportChatScreen} />
+            <Stack.Screen name="AdminDashboard" component={AdminDashboardScreen} />
+            <Stack.Screen name="AdminTutorDetail" component={AdminTutorDetailScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </ThemeProvider>
+  );
+}
+
