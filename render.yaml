@@ -1,0 +1,114 @@
+databases:
+  - name: studysync-postgres
+    databaseName: studysync
+    user: studysync
+
+services:
+  - type: web
+    name: studysync-auth
+    env: docker
+    dockerContext: backend
+    dockerfilePath: backend/auth-service/Dockerfile
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DB_URL
+        fromDatabase:
+          name: studysync-postgres
+          property: connectionString
+      - key: DB_USER
+        value: studysync
+      - key: DB_PASS
+        fromDatabase:
+          name: studysync-postgres
+          property: password
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXP_MIN
+        value: "15"
+
+  - type: web
+    name: studysync-gateway
+    env: docker
+    dockerContext: backend
+    dockerfilePath: backend/gateway/Dockerfile
+    healthCheckPath: /actuator/health
+
+  - type: web
+    name: studysync-learning
+    env: docker
+    dockerContext: backend
+    dockerfilePath: backend/learning-service/Dockerfile
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DB_URL
+        fromDatabase:
+          name: studysync-postgres
+          property: connectionString
+      - key: DB_USER
+        value: studysync
+      - key: DB_PASS
+        fromDatabase:
+          name: studysync-postgres
+          property: password
+      - key: FREE_MAX_GROUPS
+        value: "10"
+
+  - type: web
+    name: studysync-tutoring
+    env: docker
+    dockerContext: backend
+    dockerfilePath: backend/tutoring-service/Dockerfile
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DB_URL
+        fromDatabase:
+          name: studysync-postgres
+          property: connectionString
+      - key: DB_USER
+        value: studysync
+      - key: DB_PASS
+        fromDatabase:
+          name: studysync-postgres
+          property: password
+
+  - type: web
+    name: studysync-engagement
+    env: docker
+    dockerContext: backend
+    dockerfilePath: backend/engagement-service/Dockerfile
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DB_URL
+        fromDatabase:
+          name: studysync-postgres
+          property: connectionString
+      - key: DB_USER
+        value: studysync
+      - key: DB_PASS
+        fromDatabase:
+          name: studysync-postgres
+          property: password
+
+  - type: web
+    name: studysync-payment
+    env: docker
+    dockerContext: backend
+    dockerfilePath: backend/payment-service/Dockerfile
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DB_URL
+        fromDatabase:
+          name: studysync-postgres
+          property: connectionString
+      - key: DB_USER
+        value: studysync
+      - key: DB_PASS
+        fromDatabase:
+          name: studysync-postgres
+          property: password
+      - key: PAYSTACK_SECRET_KEY
+        sync: false
+      - key: PAYSTACK_PUBLIC_KEY
+        sync: false
+      - key: PAYSTACK_CALLBACK_URL
+        sync: false
