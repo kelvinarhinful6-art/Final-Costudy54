@@ -11,6 +11,8 @@ spring:
     properties:
       hibernate:
         default_schema: engagement
+        hbm2ddl:
+          create_namespaces: true
     open-in-view: false
 
 server:
@@ -21,3 +23,4 @@ management:
     web:
       exposure:
         include: health,info
+

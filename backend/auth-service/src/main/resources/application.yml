@@ -11,6 +11,8 @@ spring:
     properties:
       hibernate:
         default_schema: auth
+        hbm2ddl:
+          create_namespaces: true
     open-in-view: false
   mail:
     host: smtp.gmail.com
@@ -38,3 +40,4 @@ management:
 jwt:
   secret: ${JWT_SECRET:default-super-secret-key-for-dev-only}
   exp-min: 60
+

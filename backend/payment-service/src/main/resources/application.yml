@@ -11,6 +11,8 @@ spring:
     properties:
       hibernate:
         default_schema: payment
+        hbm2ddl:
+          create_namespaces: true
     open-in-view: false
   mvc:
     throw-exception-if-no-handler-found: true
@@ -32,3 +34,4 @@ paystack:
   secret-key: ${PAYSTACK_SECRET_KEY}
   public-key: ${PAYSTACK_PUBLIC_KEY}
   callback-url: ${PAYSTACK_CALLBACK_URL:http://localhost:8080/api/payments/callback}
+

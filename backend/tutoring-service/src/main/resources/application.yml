@@ -11,6 +11,8 @@ spring:
     properties:
       hibernate:
         default_schema: tutoring
+        hbm2ddl:
+          create_namespaces: true
     open-in-view: false
   mvc:
     # Unmapped requests (e.g. removed endpoints) throw NoHandlerFoundException
@@ -39,4 +41,5 @@ billing:
     price: 49.99
     currency: GHS
     months: 1
+
 
