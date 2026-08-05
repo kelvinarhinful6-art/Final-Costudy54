@@ -13,10 +13,18 @@ services:
     dockerfilePath: backend/auth-service/Dockerfile
     healthCheckPath: /actuator/health
     envVars:
-      - key: DB_URL
+      - key: DB_HOST
         fromDatabase:
           name: studysync-postgres
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: studysync-postgres
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: studysync-postgres
+          property: database
       - key: DB_USER
         value: studysync
       - key: DB_PASS
@@ -44,10 +52,18 @@ services:
     dockerfilePath: backend/learning-service/Dockerfile
     healthCheckPath: /actuator/health
     envVars:
-      - key: DB_URL
+      - key: DB_HOST
         fromDatabase:
           name: studysync-postgres
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: studysync-postgres
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: studysync-postgres
+          property: database
       - key: DB_USER
         value: studysync
       - key: DB_PASS
@@ -65,10 +81,18 @@ services:
     dockerfilePath: backend/tutoring-service/Dockerfile
     healthCheckPath: /actuator/health
     envVars:
-      - key: DB_URL
+      - key: DB_HOST
         fromDatabase:
           name: studysync-postgres
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: studysync-postgres
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: studysync-postgres
+          property: database
       - key: DB_USER
         value: studysync
       - key: DB_PASS
@@ -84,10 +108,18 @@ services:
     dockerfilePath: backend/engagement-service/Dockerfile
     healthCheckPath: /actuator/health
     envVars:
-      - key: DB_URL
+      - key: DB_HOST
         fromDatabase:
           name: studysync-postgres
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: studysync-postgres
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: studysync-postgres
+          property: database
       - key: DB_USER
         value: studysync
       - key: DB_PASS
@@ -103,10 +135,18 @@ services:
     dockerfilePath: backend/payment-service/Dockerfile
     healthCheckPath: /actuator/health
     envVars:
-      - key: DB_URL
+      - key: DB_HOST
         fromDatabase:
           name: studysync-postgres
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: studysync-postgres
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: studysync-postgres
+          property: database
       - key: DB_USER
         value: studysync
       - key: DB_PASS

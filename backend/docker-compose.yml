@@ -1,4 +1,4 @@
-﻿# One command runs everything:  docker compose up --build
+# One command runs everything:  docker compose up --build
 services:
 
   postgres:
@@ -25,7 +25,9 @@ services:
     depends_on:
       postgres: { condition: service_healthy }
     environment:
-      DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB}
       DB_USER: ${POSTGRES_USER}
       DB_PASS: ${POSTGRES_PASSWORD}
       JWT_SECRET: ${JWT_SECRET}
@@ -45,7 +47,9 @@ services:
     depends_on:
       postgres: { condition: service_healthy }
     environment:
-      DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB}
       DB_USER: ${POSTGRES_USER}
       DB_PASS: ${POSTGRES_PASSWORD}
       FREE_MAX_GROUPS: 10
@@ -64,7 +68,9 @@ services:
     depends_on:
       postgres: { condition: service_healthy }
     environment:
-      DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB}
       DB_USER: ${POSTGRES_USER}
       DB_PASS: ${POSTGRES_PASSWORD}
     volumes:
@@ -82,7 +88,9 @@ services:
     depends_on:
       postgres: { condition: service_healthy }
     environment:
-      DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB}
       DB_USER: ${POSTGRES_USER}
       DB_PASS: ${POSTGRES_PASSWORD}
     ports: ["8084:8080"]
@@ -98,7 +106,9 @@ services:
     depends_on:
       postgres: { condition: service_healthy }
     environment:
-      DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${POSTGRES_DB}
       DB_USER: ${POSTGRES_USER}
       DB_PASS: ${POSTGRES_PASSWORD}
       PAYSTACK_SECRET_KEY: ${PAYSTACK_SECRET_KEY}
